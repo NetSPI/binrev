@@ -58,7 +58,7 @@ REM Check for .NET libraries with peverify
 for /f   "delims=*" %%a in ('dir /s /b  %1\*.exe  %1\*.dll') do (
 REM http://stackoverflow.com/questions/10393248/get-filename-from-string-path
 for %%F in (%%a) do set fileName=%%~nxF
-depends /c /oc:"%2\logs\!fileName!".csv "%%a"
+%depends% /c /oc:"%2\logs\!fileName!".csv "%%a"
 %peverify% /MD /QUIET /IGNORE=0x80131b18 "%%a"  > nul
 REM If .NET library
 if errorlevel 0 if not errorlevel 1 (
